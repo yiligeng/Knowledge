@@ -2,6 +2,6 @@
 
 * [Introduction](README.md)
 
-* [Template](template.md)
+* [Template](template/template.md)
 
 
