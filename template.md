@@ -1,3 +1,5 @@
+
+
 ```
 这是个知识库的ß模板文件
 ```
@@ -41,25 +43,7 @@
     ![becomeDJ](./The-5-Best-Ways-to-Become-a-DJ-.jpg)
     [图片原链接](https://www.mi.edu/education/the-5-best-ways-to-become-a-dj/)
 
-    2. 重要理解知识
-       2.1 手脚并用
-       2.2 摇头晃脑
-       2.3 不能喝酒
 
-    ## 附加内容
-
-    <!-- 在这里额外补充一些困惑点和尚未解决的问题、注意事项、参考资料、须知等。 -->
-
-    1. 困惑点: 如何成为Avicii那样的BIG GOD
-    2. 注意事项
-    3. 参考资料
-       [世界百大DJ电音作品鉴赏](https://www.bilibili.com/video/BV1Wt4y1C7io?from=search&seid=2283532266415352609&spm_id_from=333.337.0.0)
-
-    <!-- 必须保留下面的文字。 -->
-
-    如果您遵循本指南的制作流程而发现有问题或可以改进的流程，请提出 Issue 或 Pull request 。
-
-    <!-- 在提交 Pull Request 前，请删除模板中的所有注释。 -->
 
 
 
