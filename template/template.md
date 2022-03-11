@@ -1,4 +1,4 @@
-<!-- 这是 知识仓库中的示例模板文件。 -->
+span
 
 <!-- 注意：在编写时，中文与英文或数字之间必须有且仅有一个空格。 -->
 
@@ -16,7 +16,6 @@
 
 <!-- 不允许插入Internet超链接、因为会过期! 需要截图或者嵌入HTML -->
 
-
 ## 介绍
 
 知识领域: 音乐DJ领域~~~
@@ -27,7 +26,6 @@
 
 前提软件: 打碟机对应的软件, 基础的节奏和乐理知识
 
-
 ## 知识体
 
 <!-- 在这里写出你沉淀的知识、注意点。-->
@@ -36,7 +34,7 @@
 
 1. 如何成为DJ, 五个最好的方式
 
-![becomeDJ](./The-5-Best-Ways-to-Become-a-DJ.png)
+![becomeDJ](./The-5-Best-Ways-to-Become-a-DJ-.jpg)
 [图片原链接](https://www.mi.edu/education/the-5-best-ways-to-become-a-dj/)
 
 2. 重要理解知识
