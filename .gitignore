@@ -3,3 +3,23 @@
 /book.pdf
 /book.mobi
 /book.epub
+
+## Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+node_modules
+
+# eBook build output
+*.epub
+*.mobi
+*.pdf
+
+# OSX junk files
+.DS_Store
+._*
+*/.DS_Store
+*/._*
+
+# IDEA
+/.idea/*
+/.idea/
