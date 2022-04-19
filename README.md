@@ -1,6 +1,4 @@
-![Build Status](https://gitlab.com/pages/gitbook/badges/master/build.svg)
-
----
+# 如何使用GitBook的教程
 
 Example [GitBook] website using GitLab Pages.
 
@@ -101,7 +99,6 @@ unless you want to contribute back to the upstream project.
 
 ----
 
-Forked from @virtuacreative
 
 [ci]: https://about.gitlab.com/gitlab-ci/
 [GitBook]: https://www.gitbook.com/
