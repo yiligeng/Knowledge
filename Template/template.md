@@ -36,7 +36,15 @@
 
 1. 如何成为DJ, 五个最好的方式
 
-![becomeDJ](./The-5-Best-Ways-to-Become-a-DJ-.jpg)
+(插图示例)
+
+<table><tr><td>
+<img src="./The-5-Best-Ways-to-Become-a-DJ-.jpg" />
+</td></tr></table>
+
+
+(链接示例)
+
 [图片原链接](https://www.mi.edu/education/the-5-best-ways-to-become-a-dj/)
 
 2. 重要理解知识
