@@ -16,3 +16,4 @@
 
 * [6. JENKINS](docs/book/jenkins/jenkins.md)
     * [6.1 Jenkins的概念与部署](docs/book/jenkins/01_jenkins_init.md)
+    * [6.2. Jenkins的pepline](docs/book/jenkins/02_jenkins_pepline.md)
