@@ -1,47 +1,13 @@
-```
-pipeline {
-    agent any
+### Jenkins创建
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'git pull'
-                // Get some code from a GitHub repository
-                git credentialsId: '880bb432-d92e-4450-beb4-8bcd31aab94a', url: 'https://github.com/7jiongsh/extention_v2.git'
+#### 1. 介绍docker创建jenkins服务的方式  主要参考官网 [网址](https://www.jenkins.io/doc/book/installing/docker/)
 
-                sh "cp -rf /playbook/tpl/prod/application.yml extension-api/src/main/resources/application.yml"
-                sh "cat extension-api/src/main/resources/application.yml"
-                // Run Maven on a Unix agent.
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                // To run Maven on a Windows agent, use
-                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-            }
-
-            post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    junit 'extension-api/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'extension-api/target/*.jar'
-                    echo 'ansible playbook'
-                    sh "ansible-playbook /playbook/pb-prod.yml"
-                    sh "python3 /playbook/tools/yanbao_automated_test/main.py prod"
-                }
-            }
-        }
-    }
-}
-```
-
-### jenkins docker创建服务器
-
-####地址
-https://www.jenkins.io/doc/book/installing/docker/
 --rm 可以不用选
+
 ```
 docker run \
   --name jenkins-docker \
+  --rm \
   --detach \
   --privileged \
   --network jenkins \
@@ -54,7 +20,10 @@ docker run \
   --storage-driver overlay2
 ```
 
+
+
 Create Dockerfile with the following content:
+
 ```
 FROM jenkins/jenkins:2.346.1-jdk11
 USER root
@@ -70,6 +39,9 @@ USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.5 docker-workflow:1.28"
 ```
 
+
+
+Run your own `myjenkins-blueocean:2.346.2-1` image as a container in Docker using the following [`docker run`](https://docs.docker.com/engine/reference/run/) command
 
 ```
 docker run \
@@ -88,20 +60,72 @@ docker run \
 ```
 
 
-####
-/usr/local/jenkinsenv
+
+#### 2. 配置本地Maven, JDK
+
+进入容器docker exec -it -u root {blue ocean} /bin/bash
+
+(1) 下载jdk
+
+/usr/local/jenkinsenv (文档的包安装地址, 需要下载apache-maven-3.8.6-bin.tar.gz, java-se-8u41-ri)
 apache-maven-3.8.6  apache-maven-3.8.6-bin.tar.gz  java-se-8u41-ri  openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz
 
-docker exec -it -u root 831bf5f96ab7 /bin/bash
 
-配置时system conf
-不要写PATH变量
+(2) maven的配置
 
+```
+安装Maven
+从官网下载apache-maven-3.6.2-bin.tar.gz, 并上传到myjenkins-blueocea容器中
+tar -xzf apache-maven-3.6.2-bin.tar.gz 解压
+mkdir -p /opt/maven 创建目录
+mv apache-maven-3.6.2/* /opt/maven 移动文件
 
-####流程图
+配置环境变量 vi /etc/profile
+export JAVA_HOME=/usr/local/jenkinsenv/jdk1.8.0_141
+export MAVEN_HOME=/usr/local/jenkinsenv/maven3
+export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
+source /etc/profile
+mvn -v 测试成功
+```
+
+(3) jenkins 系统管理 系统配置
+系统管理-系统配置
+
 <table><tr><td>
-<img src="../../images/5_jenkins_flow.png" />
+<img src="../../images/5_jenkins_jdk_maven_系统配置.png"  alt=""/>
 </td></tr></table>
 
-####alphine linux
-需要使用 apk add openjdk8
+<table><tr><td>
+<img src="../../images/6_jenkins_jdk_maven_工具配置.png"  alt=""/>
+</td></tr></table>
+
+<table><tr><td>
+<img src="../../images/7_jenkins_jdk_maven_工具配置.png"  alt=""/>
+</td></tr></table>
+
+
+
+#### 3. 插件的安装 (版本使用稳定版, 最近版存在位置BUG)
+
+(1) Credentials Binding(记录凭证)  Credentials Binding Plugin 版本523.vd859a_4b_122e6
+
+(2) git(支持从gitlab拉取代码) GitLab Plugin 版本1.5.35 
+
+(3) Email Extension(邮件发动)  Email Extension 版本2.69
+
+(4) DingTalk(钉钉) DingTalk 版本2.4.7
+
+(5) Publish Over SSH(通过ssh代理) Publish Over SSH 版本1.24
+
+(6) GitLab Hook Plugin 钩子触发
+
+(7) NodeJS Plugin node配置 [参考网站](https://www.jiubanqingchen.cn/article/23.html)
+
+
+#### 4. 流程图
+
+<table><tr><td>
+<img src="../../images/8_jenkins_flow.png"  alt=""/>
+</td></tr></table>
+
+

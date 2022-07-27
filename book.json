@@ -2,7 +2,7 @@
     "plugins": [ "chapter-fold","-lunr", "-search", "search-pro","code","insert-logo","pageview-count","popup" ],
     "pluginsConfig": {
         "insert-logo": {
-            "url": "logo.png",
+            "url": "/logo.png",
             "style": "background: none; max-height: 40px; min-height: 40px"
         }
     }
