@@ -2,13 +2,11 @@
 
 #### 1.选择pipeline利用流水线语法
 
-
 主要使用工具为流水线语法:
 
 (1) git: Git拉取仓库代码 [参考网址](https://blog.51cto.com/dongweizhen/3607280)
 
 (2) ssh: ssh推送 [参考网址](https://cloud.tencent.com/developer/article/1688143)](https://cloud.tencent.com/developer/article/1551377)
-
 
 #### 2.具体例子
 
@@ -59,7 +57,7 @@ pipeline {
          success{
   
               build job: '私家车模型_接口测试', parameters: [string(name:'domain', value: "${params.domain}")]
-          
+        
         }
     }
   
@@ -67,7 +65,6 @@ pipeline {
 
 }
 ```
-
 
 登录服务器拉取代码-重启服务
 
@@ -100,17 +97,15 @@ pipeline {
             to: 'gengyl@deltaentropy.com'
         }
         success{
-            
+          
               build job: '货车产品_接口测试', parameters: [string(name:'domain', value: "${params.domain}")]
-                      
+                    
         }
-    
+  
     }
 
 }
 ```
-
-
 
 前端项目:
 
@@ -157,7 +152,6 @@ pipeline {
 
 }
 ```
-
 
 ansible playbook:
 
